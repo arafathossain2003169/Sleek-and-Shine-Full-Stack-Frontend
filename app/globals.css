@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+  SleeknShine design tokens.
+
+  Light mode: warm off-white / soft beige, black text, muted gray borders.
+  Dark mode: near-black charcoal, soft borders, premium feel.
+  Accent: a muted rose-champagne family — restrained, not candy-pink.
+  Signature motif: circular "shade swatch" dots used as bullets/markers
+  throughout (badges, list markers, loading states) — a nod to cosmetics
+  swatch charts.
+*/
+
+@layer base {
+  :root {
+    --background: 36 33% 97%;        /* #FAF7F2 warm off-white */
+    --foreground: 20 14% 10%;        /* near-black warm text */
+    --card: 0 0% 100%;
+    --card-foreground: 20 14% 10%;
+    --muted: 36 20% 93%;
+    --muted-foreground: 20 8% 40%;
+    --border: 30 12% 87%;            /* muted gray-beige border */
+    --input: 30 12% 87%;
+    --ring: 350 35% 55%;
+    --primary: 20 14% 10%;
+    --primary-foreground: 36 33% 97%;
+    --accent: 350 35% 55%;           /* muted rose */
+    --accent-foreground: 0 0% 100%;
+    --accent-soft: 350 45% 92%;      /* soft rose tint */
+    --destructive: 0 62% 45%;
+    --destructive-foreground: 0 0% 100%;
+  }
+
+  .dark {
+    --background: 20 10% 6%;         /* #0F0E0D near-black charcoal */
+    --foreground: 36 20% 94%;
+    --card: 20 9% 9%;
+    --card-foreground: 36 20% 94%;
+    --muted: 20 8% 14%;
+    --muted-foreground: 30 8% 62%;
+    --border: 20 8% 18%;
+    --input: 20 8% 18%;
+    --ring: 350 45% 65%;
+    --primary: 36 20% 94%;
+    --primary-foreground: 20 10% 8%;
+    --accent: 350 45% 65%;           /* champagne rose, brighter for dark bg */
+    --accent-foreground: 20 10% 8%;
+    --accent-soft: 350 30% 20%;
+    --destructive: 0 62% 55%;
+    --destructive-foreground: 0 0% 100%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display;
+  }
+
+  ::selection {
+    @apply bg-accent-soft text-foreground;
+  }
+}
+
+@layer utilities {
+  .swatch-dot {
+    @apply inline-block h-2 w-2 rounded-full bg-accent;
+  }
+
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-none {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
